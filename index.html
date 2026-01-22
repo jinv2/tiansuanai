@@ -1,3 +1,4 @@
+# 1. 重写 index.html (清除末尾的错误代码)
 cat > index.html << 'EOF'
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -8,7 +9,7 @@ cat > index.html << 'EOF'
     <style>
         /* --- 全局样式 --- */
         :root {
-            --accent-color: #ff7b00; /* 天算橙 */
+            --accent-color: #ff7b00;
             --bg-color: #ffffff;
             --text-color: #1a1a1a;
             --light-gray: #f5f5f7;
@@ -24,7 +25,7 @@ cat > index.html << 'EOF'
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- 导航栏 (统一标准版) --- */
+        /* --- 导航栏 --- */
         nav {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
@@ -40,32 +41,23 @@ cat > index.html << 'EOF'
         }
         .logo img { height: 32px; width: auto; border-radius: 6px; }
 
-        /* 右侧按钮组 (Flex布局) */
-        .nav-group {
-            display: flex;
-            align-items: center;
-            gap: 20px; /* 按钮间距 */
-        }
+        .nav-group { display: flex; gap: 20px; }
         .nav-link {
             text-decoration: none; color: #666; font-size: 0.9rem; font-weight: 600; 
             transition: color 0.2s ease; display: flex; align-items: center; gap: 5px;
         }
         .nav-link:hover { color: var(--accent-color); }
-        
-        /* 当前页面高亮样式 */
         .nav-link.active { color: var(--accent-color); }
 
-        /* 手机端适配导航 */
         @media (max-width: 600px) {
-            .nav-link span { display: none; } /* 手机上只显示图标，不显示文字，防止拥挤 */
+            .nav-link span { display: none; }
             .nav-link { font-size: 1.2rem; }
             .nav-group { gap: 15px; }
         }
 
-        /* --- 主容器 --- */
+        /* --- 主内容 --- */
         .main-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
-        /* --- 2026 发布会风格 Hero --- */
         .hero { text-align: center; margin-bottom: 60px; padding-top: 20px; }
         .tag-pill {
             display: inline-block; background: #000; color: #fff; 
@@ -74,7 +66,6 @@ cat > index.html << 'EOF'
         .hero h1 { margin: 0 0 10px 0; font-size: 2.5em; letter-spacing: -1px; }
         .hero p { color: #666; font-size: 1.1em; max-width: 600px; margin: 0 auto; }
 
-        /* --- 数字资产板块 (折叠感设计) --- */
         .assets-section {
             display: flex; align-items: center; justify-content: center; gap: 40px;
             background: var(--light-gray); padding: 30px; border-radius: 16px; margin-bottom: 60px; border: 1px solid var(--border-color);
@@ -92,7 +83,6 @@ cat > index.html << 'EOF'
             .assets-list { grid-template-columns: 1fr; text-align: left; }
         }
 
-        /* --- 分类标题样式 --- */
         .section-header {
             display: flex; align-items: center; gap: 10px; margin-bottom: 25px; margin-top: 50px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0;
         }
@@ -100,7 +90,6 @@ cat > index.html << 'EOF'
         .section-title { font-size: 1.3rem; font-weight: 700; color: #000; margin: 0; }
         .section-desc { font-size: 0.9rem; color: #888; font-weight: 400; margin-left: auto; }
 
-        /* --- 矩阵网格 --- */
         .matrix-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -115,13 +104,8 @@ cat > index.html << 'EOF'
             text-decoration: none;
             color: #333;
             transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100px;
-            position: relative;
-            overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 100px; position: relative; overflow: hidden;
         }
         .matrix-card:hover {
             transform: translateY(-3px);
@@ -131,12 +115,10 @@ cat > index.html << 'EOF'
         .matrix-icon { font-size: 1.8em; margin-bottom: 8px; }
         .matrix-name { font-weight: 600; font-size: 0.85em; line-height: 1.2; }
         
-        /* 标记新发布 */
         .new-badge {
             position: absolute; top: 6px; right: 6px; width: 6px; height: 6px; background: var(--accent-color); border-radius: 50%;
         }
 
-        /* --- 底部 --- */
         .coffee-link {
             display: inline-flex; align-items: center; gap: 8px;
             text-decoration: none; color: #666; border: 1px solid #eee;
@@ -153,10 +135,8 @@ cat > index.html << 'EOF'
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">
-                <img src="logo.jpg" alt="Logo"> 
-                天算AI
+                <img src="logo.jpg" alt="Logo"> 天算AI
             </a>
-            
             <div class="nav-group">
                 <a href="https://tiansuanai.netlify.app/" class="nav-link active">
                     🏠 <span class="nav-text">矩阵首页</span>
@@ -206,12 +186,10 @@ cat > index.html << 'EOF'
                 <div class="new-badge"></div>
                 <span class="matrix-icon">🏭</span><span class="matrix-name">Industry AI<br>工业智能</span>
             </a>
-
             <a href="https://music-agent-pwa.netlify.app/" target="_blank" class="matrix-card">
                 <div class="new-badge"></div>
                 <span class="matrix-icon">🎼</span><span class="matrix-name">Music Agent<br>智能配器</span>
             </a>
-            
             <a href="https://tiansuan-ai-synth.netlify.app/" target="_blank" class="matrix-card">
                 <span class="matrix-icon">🎹</span><span class="matrix-name">AI Synth 2026<br>旗舰合成器</span>
             </a>
@@ -278,7 +256,6 @@ cat > index.html << 'EOF'
                 <div class="new-badge"></div>
                 <span class="matrix-icon">🛡️</span><span class="matrix-name">BioGuard<br>生命哨兵</span>
             </a>
-
             <a href="https://claritas-terminal.netlify.app/" target="_blank" class="matrix-card">
                 <span class="matrix-icon">💻</span><span class="matrix-name">Claritas<br>Web 终端</span>
             </a>
@@ -316,7 +293,6 @@ cat > index.html << 'EOF'
                 <div class="new-badge"></div>
                 <span class="matrix-icon">⚖️</span><span class="matrix-name">Debate AI<br>智能辩论</span>
             </a>
-            
             <a href="https://agent-strategos.netlify.app/" target="_blank" class="matrix-card">
                 <span class="matrix-icon">♟️</span><span class="matrix-name">Strategos<br>战略家</span>
             </a>
@@ -374,7 +350,7 @@ cat > index.html << 'EOF'
 </html>
 EOF
 
-# 推送
+# 2. 提交修复
 git add index.html
-git commit -m "fix: remove source code link but keep telemetry"
+git commit -m "fix: remove leaked command text and source link"
 git push
