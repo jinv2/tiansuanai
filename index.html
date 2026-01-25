@@ -48,6 +48,12 @@
         .nav-link:hover { color: var(--accent-color); }
         .nav-link.active { color: var(--accent-color); }
 
+        @media (max-width: 600px) {
+            .nav-link span { display: none; }
+            .nav-link { font-size: 1.2rem; }
+            .nav-group { gap: 15px; }
+        }
+
         /* --- 主内容 --- */
         .main-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
@@ -70,6 +76,11 @@
         .assets-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 30px; }
         .assets-list li { font-size: 0.9rem; color: #555; display: flex; justify-content: space-between; border-bottom: 1px solid #e0e0e0; padding-bottom: 4px;}
         .assets-list strong { color: #000; font-weight: 600; margin-right: 10px;}
+
+        @media (max-width: 768px) {
+            .assets-section { flex-direction: column; text-align: center; gap: 20px; }
+            .assets-list { grid-template-columns: 1fr; text-align: left; }
+        }
 
         .section-header {
             display: flex; align-items: center; gap: 10px; margin-bottom: 25px; margin-top: 50px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0;
@@ -157,7 +168,7 @@
                     <li><strong>原创音乐</strong> <span>7000分钟</span></li>
                     <li><strong>AI 短视频</strong> <span>20000部</span></li>
                     <li><strong>原创文学</strong> <span>5万字</span></li>
-                    <li><strong>PWA 应用</strong> <span>38个</span></li>
+                    <li><strong>PWA 应用</strong> <span>39个</span></li>
                     <li><strong>大语言模型</strong> <span>10个</span></li>
                     <li><strong>智能体 Agent</strong> <span>18个</span></li>
                 </ul>
@@ -173,6 +184,10 @@
             <a href="https://lingshu-score.netlify.app/" target="_blank" class="matrix-card" style="border: 2px solid var(--ai-cyan);">
                 <div class="new-badge"></div>
                 <span class="matrix-icon">🛰️</span><span class="matrix-name">灵枢简谱 v3.0<br>AI指挥中心</span>
+            </a>
+            <a href="https://muse-link-ai.netlify.app/" target="_blank" class="matrix-card">
+                <div class="new-badge"></div>
+                <span class="matrix-icon">🔗</span><span class="matrix-name">灵犀简谱<br>协作联动版</span>
             </a>
             <a href="https://samsaramuse2.netlify.app/" target="_blank" class="matrix-card">
                 <span class="matrix-icon">🏛️</span><span class="matrix-name">灵愿简谱 Pro<br>v28.56 终极站</span>
